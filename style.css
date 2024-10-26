@@ -615,10 +615,11 @@ section {
         right: 2rem;
     }
     .home {
-        background-position: left;
+        background-position: cover;
         justify-content: center;
         text-align: center;
     }
+
     .home .content h3{
         font-size: 4.5rem;
     }
