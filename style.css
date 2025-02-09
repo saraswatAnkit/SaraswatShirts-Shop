@@ -618,6 +618,8 @@ section {
         background-position: center;
         justify-content: center;
         text-align: center;
+        background: url(./images/menu3.jpg) no-repeat;
+        background-size: cover;
     }
     .home .content h3{
         font-size: 4.5rem;
