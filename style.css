@@ -249,6 +249,8 @@ section {
 .about .row .image img{
     width: 100%;
     height: 53.1rem;
+    object-fit: contain;
+    object-position: center;
 }
 
 .about .row .content{
