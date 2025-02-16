@@ -56,3 +56,47 @@ document.getElementById("search-box").addEventListener("input", function () {
     //     window.location.hash = "#products";
     // }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    let cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieve stored cart data
+
+    function updateCartDisplay() {
+        let cartSection = document.getElementById("cart-section");
+        if (cart.length > 0) {
+            cartSection.style.display = "block";
+        } else {
+            cartSection.style.display = "none";
+        }
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function addToCart(event) {
+        event.preventDefault();
+        let productBox = event.target.closest(".box");
+        let productName = productBox.querySelector("h3").textContent;
+        let productPrice = productBox.querySelector(".price").textContent;
+        let productImage = productBox.querySelector("img").src;
+
+        let product = {
+            name: productName,
+            price: productPrice,
+            image: productImage,
+        };
+
+        cart.push(product);
+        updateCartDisplay();
+        alert(productName + " has been added to your cart!");
+    }
+
+    // Attach event listeners to all "Add to Cart" buttons and cart icons
+    document.querySelectorAll(".btn, .fa-shopping-cart").forEach(button => {
+        button.addEventListener("click", addToCart);
+    });
+
+    // Checkout Button Click Event
+    document.getElementById("checkout-btn").addEventListener("click", function () {
+        window.location.href = "cart.html";
+    });
+
+    updateCartDisplay();
+});
